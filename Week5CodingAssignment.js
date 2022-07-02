@@ -18,12 +18,45 @@ class shapeBox
     {
         this.shapes = [];
     }
-
+    start()
+    {
+    let selection = this.showMenuOptions();
+    while(selection != 0)
+    {
+        switch(selection)
+        {
+            case 1:
+                this.addShapes();
+                break;
+            case 2:
+                this.viewShapes();
+                break;
+            case 3:
+                this.deleteShapes();
+                break;
+            default:
+                selection = 0;
+        }
+        this.showMenuOptions();
+    }
+        alert("No shapes.");
+    }
+    showMenuOptions() {
+        return prompt(`
+        0) Exit
+        1) Add shapes
+        2) View shapes
+        3) Delete shapes
+        `);
+    }
     addShapes(shapes)
     {
         if(shapes instanceof Shapes)
         {
-            this.shapes.push[Shape];
+            let name = prompt("Enter the name of the shape: ");
+            let color = prompt("Enter the color of the shape: ");
+            let sides = prompt("Enter how many sides the shape has: ");
+            this.shapes.push(new Shape(name, color, sides));
         }
         else
         {
@@ -38,32 +71,25 @@ class shapeBox
 
     viewShapes()
     {
+        let index = prompt("Here are the shapes: ");
+        if(index > -1 && index < this.shapes.length)
+        {
+            for(let i = 0; i < this.shapes.length; i++)
+            {
 
+            }
+        }
     }
     
     deleteShapes()
     {
-
-    }
-
-    start()
-    {
-    let selection = this.showMenuOptions();
-    while (selection != 0 )
-    {
-        switch(selection)
+        let index = prompt("Choose the index of the shape you wish to delete: ");
+        if(index > -1 && index < this.shapes.length)
         {
-            case '1':
-            break;
-            case '2':
-            break;
-            case '3':
-            break;
-            case '4':
-            break;
-            default:
-            break;
+            this.shapes.length.splice(index, 1);
         }
     }
-    }
 }
+
+let shapeBoxMenu = new shapeBox();
+shapeBoxMenu.start();
