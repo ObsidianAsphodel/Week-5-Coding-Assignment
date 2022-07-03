@@ -1,5 +1,6 @@
 class Shape
 {
+    //Class to create the object shape
     constructor(name, color, sides)
     {
         this.name = name;
@@ -16,6 +17,7 @@ class shapeBox
 {
     constructor()
     {
+        //Array that stores the shapes.
         this.shapeArray = [];
     }
     start()
@@ -62,6 +64,7 @@ class shapeBox
         }
     }
     createShapes()
+    //Used to create and store the new shapes into the shapeArray array.
     {
 
      let name = prompt("Enter the name of the shape: ");
@@ -75,6 +78,7 @@ class shapeBox
     }
 
     viewShapes()
+    //Used to view the shapes in the array.
     {
         let index = prompt("Here are the shapes: ");
         if(index > -1 && index < this.shapeArray.length)
@@ -85,7 +89,7 @@ class shapeBox
             }
         }
     }
-    
+    //Used to delete the shapes in the array. 
     deleteShapes()
     {
         let index = prompt("Choose the index of the shape you wish to delete: ");
