@@ -16,7 +16,7 @@ class shapeBox
 {
     constructor()
     {
-        this.shapes = [];
+        this.shapeArray = [];
     }
     start()
     {
@@ -25,19 +25,19 @@ class shapeBox
     {
         switch(selection)
         {
-            case 1:
-                this.addShapes();
+            case '1':
+                this.createShapes();
                 break;
-            case 2:
+            case '2':
                 this.viewShapes();
                 break;
-            case 3:
+            case '3':
                 this.deleteShapes();
                 break;
             default:
                 selection = 0;
         }
-        this.showMenuOptions();
+        selection = this.showMenuOptions();
     }
         alert("No shapes.");
     }
@@ -49,21 +49,26 @@ class shapeBox
         3) Delete shapes
         `);
     }
-    addShapes(shapes)
+    addShapes(shapeObject)
     {
-        if(shapes instanceof Shapes)
+        if(shapeObject instanceof Shape)
         {
-            let name = prompt("Enter the name of the shape: ");
-            let color = prompt("Enter the color of the shape: ");
-            let sides = prompt("Enter how many sides the shape has: ");
-            this.shapes.push(new Shape(name, color, sides));
+            let selection = prompt("Enter 0 to return to Main Menu: ");
+            this.shapeObject.push(new Shape(name, color, sides));
         }
         else
         {
             throw new Error("That's not a shape. Shapes must be instanced.");
         }
     }
+    createShapes()
+    {
 
+     let name = prompt("Enter the name of the shape: ");
+     let color = prompt("Enter the color of the shape: ");
+     let sides = prompt("Enter how many sides the shape has: ");
+     this.shapeArray.push(new Shape(name, color, sides));
+    }
     describe()
     {
         return `${this.name} has ${this.shapes.length} inside of it`;
@@ -72,11 +77,11 @@ class shapeBox
     viewShapes()
     {
         let index = prompt("Here are the shapes: ");
-        if(index > -1 && index < this.shapes.length)
+        if(index > -1 && index < this.shapeArray.length)
         {
-            for(let i = 0; i < this.shapes.length; i++)
+            for(let i = 0; i < this.shapeArray.length; i++)
             {
-
+                this.shapeArray[i].name + ' - ' + this.shapeArray[i].color + ' - ' + this.shapeArray.sides + '\n';
             }
         }
     }
@@ -86,7 +91,7 @@ class shapeBox
         let index = prompt("Choose the index of the shape you wish to delete: ");
         if(index > -1 && index < this.shapes.length)
         {
-            this.shapes.length.splice(index, 1);
+            this.shapeArray.length.splice(index, 1);
         }
     }
 }
