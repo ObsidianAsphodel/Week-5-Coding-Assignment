@@ -66,11 +66,12 @@ class shapeBox
     createShapes()
     //Used to create and store the new shapes into the shapeArray array.
     {
-
+        console.log("Running");
      let name = prompt("Enter the name of the shape: ");
      let color = prompt("Enter the color of the shape: ");
      let sides = prompt("Enter how many sides the shape has: ");
      this.shapeArray.push(new Shape(name, color, sides));
+        console.log(this.shapeArray, "Storing new shape");
     }
     describe()
     {
@@ -80,23 +81,20 @@ class shapeBox
     viewShapes()
     //Used to view the shapes in the array.
     {
-        let index = prompt("Here are the shapes: ");
-        if(index > -1 && index < this.shapeArray.length)
-        {
+            let shapeString = '';
             for(let i = 0; i < this.shapeArray.length; i++)
             {
-                this.shapeArray[i].name + ' - ' + this.shapeArray[i].color + ' - ' + this.shapeArray.sides + '\n';
+                //pushes string to shapeString. Used console.log to test functionality. 
+                shapeString += this.shapeArray[i].name + ' - ' + this.shapeArray[i].color + ' - ' + this.shapeArray[i].sides + '\n';
             }
-        }
+            alert(shapeString);
     }
     //Used to delete the shapes in the array. 
     deleteShapes()
     {
         let index = prompt("Choose the index of the shape you wish to delete: ");
-        if(index > -1 && index < this.shapes.length)
-        {
-            this.shapeArray.length.splice(index, 1);
-        }
+        //Check documentation for proper syntax. array.prototype.splice()
+        this.shapeArray.splice(index, 1);
     }
 }
 
